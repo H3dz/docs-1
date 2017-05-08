@@ -196,6 +196,7 @@ model fields, depending on a country, ie::
     namespace App\Model\Table;
 
     use Cake\ORM\Table;
+    use Cake\Localized\Validation\FrValidation;
     use Cake\Validation\Validator;
 
     class PostsTable extends Table
@@ -203,7 +204,7 @@ model fields, depending on a country, ie::
         public function validationDefault(Validator $validator)
         {
             // add the provider to the validator
-            $validator->setProvider('fr', 'Localized\Validation\FrValidation');
+            $validator->setProvider('fr', FrValidation::class);
             // use the provider in a field validation rule
             $validator->add('phoneField', 'myCustomRuleNameForPhone', [
                 'rule' => 'phone',
